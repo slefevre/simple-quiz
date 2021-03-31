@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class QuestionSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class QuestionSeeder extends Seeder
     public function run()
     {
     	$i = 0;
-        DB::table('questions')->insert(
+        \DB::table('questions')->insert([
             [
                 'wording' => "What is the average air speed velocity of a laden swallow?",
                 'created_at' => Carbon::now(),
@@ -40,6 +41,6 @@ class QuestionSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'sort' => ++$i,
             ],
-        );
+        ]);
     }
 }
