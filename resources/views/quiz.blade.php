@@ -16,6 +16,12 @@
         </style>
     </head>
     <body class="antialiased">
-    Quiz goes here
+
+    <h1>Quiz</h1>
+
+    @isset($questions)
+
+    @endisset
+
     </body>
 </html>
