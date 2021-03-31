@@ -13,7 +13,13 @@ class QuestionsMigration extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('questions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->string('wording')->index();
+            $table->integer('sort')->unsigned();
+            $table->unique('sort');
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class QuestionsMigration extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('questions');
     }
 }
