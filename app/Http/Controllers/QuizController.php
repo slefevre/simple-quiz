@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Question;
+use App\Question;
 
 class QuizController extends Controller
 {
     public static function quiz() {
         return view('quiz', [
-            'questions' => Questions::all(),
+            'questions' => Question::all(),
         ]); 
     }
 }
