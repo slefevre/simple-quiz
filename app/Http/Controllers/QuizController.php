@@ -14,5 +14,6 @@ class QuizController extends Controller
     }
     
     public static function response(Request $request) {
+        return view('answers');
     }
 }
