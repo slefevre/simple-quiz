@@ -12,4 +12,7 @@ class QuizController extends Controller
             'questions' => Question::orderBy('sort')->get(),
         ]); 
     }
+    
+    public static function response(Request $request) {
+    }
 }
