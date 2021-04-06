@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'QuizController@quiz');
-Route::submit('/', 'QuizController@respond');
+Route::post('/', 'QuizController@respond');
