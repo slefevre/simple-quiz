@@ -20,11 +20,14 @@
     <h1>Quiz</h1>
 
     @isset($questions)
+    <form method="POST" action="/">
+    @csrf
     <ul>
         @foreach( $questions as $question )
         @include('question')
         @endforeach
     </ul>
+    </form>
     @endisset
 
     </body>
