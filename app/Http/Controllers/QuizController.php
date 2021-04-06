@@ -13,7 +13,7 @@ class QuizController extends Controller
         ]); 
     }
     
-    public static function response(Request $request) {
+    public static function respond(Request $request) {
         return view('answers');
     }
 }
