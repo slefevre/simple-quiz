@@ -1,3 +1,3 @@
 <li>{{ $question->wording }}<br/>
-<input id="{{ $question->id }}" type="text" value="">
+<input name="{{ $question->id }}" type="text" value="">
 </li>
