@@ -27,6 +27,7 @@
         @include('question')
         @endforeach
     </ul>
+    <button type="submit" class="btn btn-primary">Score</button>
     </form>
     @endisset
 
