@@ -9,7 +9,7 @@ class QuizController extends Controller
 {
     public static function quiz() {
         return view('quiz', [
-            'questions' => Question::all(),
+            'questions' => Question::orderBy('sort')->get(),
         ]); 
     }
 }
