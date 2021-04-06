@@ -20,9 +20,11 @@
     <h1>Quiz</h1>
 
     @isset($questions)
+    <ul>
         @foreach( $questions as $question )
         @include('question')
         @endforeach
+    </ul>
     @endisset
 
     </body>
