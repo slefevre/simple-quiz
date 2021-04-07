@@ -44,7 +44,7 @@ class QuizController extends Controller
         $quiz = new Quiz;
         $quiz->save();
         
-        // check answers
+        // check answers, prepare output for view
         $questions = Question::orderBy('sort')->get();
         $responses = $request->all();
         $answers = [];
