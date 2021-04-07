@@ -19,6 +19,10 @@
 
     <h1>Quiz</h1>
 
+    @if($errors->any())
+        {{ implode('', $errors->all('<div>:message</div>')) }}
+    @endif
+
     @isset($questions)
     <form method="POST" action="/">
     @csrf
