@@ -50,17 +50,30 @@ class QuizController extends Controller
         $answers = [];
         $score = ['total'=>0,'correct'=>0];
 
-        foreach ( $questions as $question ) {
+        foreach ( $questions as $i => $question ) {
           
             // store the answer in the db
             self::addAnswer($quiz, $question, $responses['question_' . $question->id] ); 
             
+            // format answers for output
+            
+            // original question
+            $answers[$i][] = '#' . $i . ' ' . $question['answer'];
+
+            // their response
+            $answers[$i][] = 'Your answer: ' . $responses['question_' . $question->id];
+            
+            // tally the total
             $score['total']++;
+
             if ( $question['answer'] != $responses['question_' . $question->id] ) {
-                $answers[] = "#" . $question->id . " is wrong.";
+            // they got it wrong
+                $answers[] = 'Incorrect'; 
+                $answers[] = 'The correct answer is \'' . $question['answer'] . '\'';
             }
             else {
-                $answers[] = "#" . $question->id . " is correct.";
+            // they got it right
+                $answers[] = 'Correct!';
                 $score['correct']++;
             }
         }
