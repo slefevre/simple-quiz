@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Answer;
+use App\Quiz;
 
 class QuizController extends Controller
 {
@@ -36,7 +38,11 @@ class QuizController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
+        
+        // start a new quiz to store answers
+        $quiz = new Quiz;
+        $quiz->save();
+        
         // check answers
         $questions = Question::orderBy('sort')->get();
         $responses = $request->all();
