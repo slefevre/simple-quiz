@@ -28,7 +28,11 @@
     @isset($answers)
     <ul>
         @foreach( $answers as $answer )
-		<li>{{ $answer }}<br/>
+            <li>
+            @foreach( $answer as $line )
+            	{{ $line }} <br/>
+            @endforeach
+            </li>
         @endforeach
     </ul>
     @endisset
