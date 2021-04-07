@@ -20,7 +20,9 @@
     <h1>Quiz</h1>
 
     @if($errors->any())
-        {{ implode('', $errors->all('<div>:message</div>')) }}
+        @foreach ($errors->all() as $error)
+            {{ $error }}<br/>
+        @endforeach
     @endif
 
     @isset($questions)
