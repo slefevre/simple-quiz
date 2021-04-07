@@ -19,7 +19,23 @@ class QuizController extends Controller
     /**
      * Show the user their score
      */
+
     public static function respond(Request $request) {
+
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'question_1' => 'required',
+            'question_2' => 'required',
+            'question_3' => 'required',
+            'question_4' => 'required',
+            'question_5' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         return view('answers');
     }
 }
