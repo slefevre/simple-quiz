@@ -22,6 +22,7 @@ class QuizController extends Controller
 
     public static function respond(Request $request) {
 
+        // validate the responses
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'question_1' => 'required',
             'question_2' => 'required',
@@ -36,6 +37,23 @@ class QuizController extends Controller
                 ->withInput();
         }
 
-        return view('answers');
+        // check answers
+        $questions = Question::orderBy('sort')->get();
+        $responses = $request->all();
+        $answers = [];
+
+
+        foreach ( $questions as $question ) {
+            if ( $question['answer'] != $responses['question_' . $question->id] ) {
+                $answers[] = "#" . $question->id . " is wrong.";
+            }
+            else {
+                $answers[] = "#" . $question->id . " is correct.";
+            }
+        }
+       
+        return view('answers', [
+            'answers' => $answers
+        ]);
     }
 }
