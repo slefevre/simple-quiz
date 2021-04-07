@@ -13,7 +13,9 @@ class UniqueQuizAnswers extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('answers', function(Blueprint $table) {
+            $table->unique(['question_id', 'quiz_id']);
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class UniqueQuizAnswers extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('answers', function(Blueprint $table) {
+            $table->dropUnique(['question_id', 'quiz_id']);
+        });
     }
 }
