@@ -58,22 +58,22 @@ class QuizController extends Controller
             // format answers for output
             
             // original question
-            $answers[$i][] = '#' . $i . ' ' . $question['answer'];
+            $answers[$i][] = '#' . ( $i + 1 ) . ' "' . $question['wording'] . '"';
 
             // their response
-            $answers[$i][] = 'Your answer: ' . $responses['question_' . $question->id];
+            $answers[$i][] = 'Your answer: "' . $responses['question_' . $question->id] . '"';
             
             // tally the total
             $score['total']++;
 
             if ( $question['answer'] != $responses['question_' . $question->id] ) {
             // they got it wrong
-                $answers[] = 'Incorrect'; 
-                $answers[] = 'The correct answer is \'' . $question['answer'] . '\'';
+                $answers[$i][] = 'Incorrect'; 
+                $answers[$i][] = 'The correct answer is "' . $question['answer'] . '"';
             }
             else {
             // they got it right
-                $answers[] = 'Correct!';
+                $answers[$i][] = 'Correct!';
                 $score['correct']++;
             }
         }
