@@ -50,6 +50,10 @@ class QuizController extends Controller
         $score = ['total'=>0,'correct'=>0];
 
         foreach ( $questions as $question ) {
+          
+            // store the answer in the db
+            self::addAnswer($quiz, $question, $responses['question_' . $question->id] ); 
+            
             $score['total']++;
             if ( $question['answer'] != $responses['question_' . $question->id] ) {
                 $answers[] = "#" . $question->id . " is wrong.";
@@ -64,5 +68,12 @@ class QuizController extends Controller
             'answers' => $answers,
             'score' => $score,
         ]);
+    }
+    
+    public static function addAnswer(Quiz $quiz, $question, $response ) {
+        $answer = new Answer; 
+        $answer->response = $response; 
+        $answer->quiz_id = $quiz['id'];
+        $answer->save();
     }
 }
