@@ -33,5 +33,10 @@
     </ul>
     @endisset
 
+    @isset($score)
+
+    <strong>Your score:<strong> {{ $score['correct'] }} out of {{ $score['total'] }}.</br>
+    @endisset
+
     </body>
 </html>

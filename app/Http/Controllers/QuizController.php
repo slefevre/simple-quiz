@@ -41,19 +41,22 @@ class QuizController extends Controller
         $questions = Question::orderBy('sort')->get();
         $responses = $request->all();
         $answers = [];
-
+        $score = ['total'=>0,'correct'=>0];
 
         foreach ( $questions as $question ) {
+            $score['total']++;
             if ( $question['answer'] != $responses['question_' . $question->id] ) {
                 $answers[] = "#" . $question->id . " is wrong.";
             }
             else {
                 $answers[] = "#" . $question->id . " is correct.";
+                $score['correct']++;
             }
         }
        
         return view('answers', [
-            'answers' => $answers
+            'answers' => $answers,
+            'score' => $score,
         ]);
     }
 }
