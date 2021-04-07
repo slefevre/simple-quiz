@@ -71,10 +71,11 @@ class QuizController extends Controller
         ]);
     }
     
-    public static function addAnswer(Quiz $quiz, $question, $response ) {
+    public static function addAnswer( Quiz $quiz, $question, $response ) {
         $answer = new Answer; 
         $answer->response = $response; 
         $answer->quiz_id = $quiz['id'];
+        $answer->question_id = $question['id'];
         $answer->save();
     }
 }
