@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \Illuminate\Support\Facades\Validator;
 use App\Question;
 use App\Answer;
 use App\Quiz;
@@ -25,7 +26,7 @@ class QuizController extends Controller
     public static function respond(Request $request) {
 
         // validate the responses
-        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'question_1' => 'required',
             'question_2' => 'required',
             'question_3' => 'required',
